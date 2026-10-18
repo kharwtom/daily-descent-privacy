@@ -100,7 +100,7 @@
 </ul>
 <p>None of this is sent to the developer. It stays on your device until you uninstall the app or clear its storage.</p>
 <h2>Network use</h2>
-<p>The game makes one kind of network request: it asks time servers for the current time. It does this on the first launch, when you open or return to the app, and again after your device restarts. The servers it may contact are <code>time.google.com</code>, <code>pool.ntp.org</code> and <code>time.cloudflare.com</code>, using the standard NTP protocol.</p>
+<p>The game makes one kind of network request: it asks for the current time. It does this on the first launch, when you open or return to the app, and again after your device restarts. It first asks the time servers <code>time.google.com</code>, <code>pool.ntp.org</code> and <code>time.cloudflare.com</code> over the standard NTP protocol. If none of them answers, for example on a network that blocks NTP, it sends one HTTPS request to <code>https://www.cloudflare.com/cdn-cgi/trace</code> and reads only the date and time from the reply.</p>
 <p>Like any internet request, this one shows your device's IP address to the server that answers it. The operators of those servers (Google, the volunteers who run the NTP Pool, and Cloudflare) handle that under their own terms. The game adds no identifier of its own and sends none of your game data. The developer does not run these servers and does not see their logs.</p>
 <p>If the time check fails, the game keeps using the last time it knows while that time is still valid. Otherwise it asks you to try again.</p>
 <h2>Backup</h2>
@@ -137,7 +137,7 @@
 </ul>
 <p>ข้อมูลเหล่านี้ไม่ถูกส่งไปให้ผู้พัฒนา และอยู่ในเครื่องของคุณจนกว่าคุณจะถอนการติดตั้งแอปหรือล้างพื้นที่เก็บข้อมูลของแอป</p>
 <h2>การใช้เครือข่าย</h2>
-<p>เกมส่งคำขอผ่านเครือข่ายเพียงแบบเดียว คือขอเวลาปัจจุบันจากเซิร์ฟเวอร์เวลา โดยทำตอนเปิดเกมครั้งแรก ตอนเปิดหรือกลับเข้ามาที่แอป และอีกครั้งหลังรีสตาร์ตเครื่อง เซิร์ฟเวอร์ที่อาจถูกติดต่อคือ <code>time.google.com</code>, <code>pool.ntp.org</code> และ <code>time.cloudflare.com</code> โดยใช้โปรโตคอล NTP มาตรฐาน</p>
+<p>เกมส่งคำขอผ่านเครือข่ายเพียงแบบเดียว คือขอเวลาปัจจุบัน โดยทำตอนเปิดเกมครั้งแรก ตอนเปิดหรือกลับเข้ามาที่แอป และอีกครั้งหลังรีสตาร์ตเครื่อง เกมจะถามเซิร์ฟเวอร์เวลา <code>time.google.com</code>, <code>pool.ntp.org</code> และ <code>time.cloudflare.com</code> ผ่านโปรโตคอล NTP มาตรฐานก่อน ถ้าไม่มีเซิร์ฟเวอร์ใดตอบ เช่น ในเครือข่ายที่บล็อก NTP เกมจะส่งคำขอ HTTPS หนึ่งครั้งไปที่ <code>https://www.cloudflare.com/cdn-cgi/trace</code> และอ่านเฉพาะวันเวลาจากคำตอบ</p>
 <p>เช่นเดียวกับคำขอทางอินเทอร์เน็ตทุกชนิด เซิร์ฟเวอร์ที่ตอบกลับจะเห็นที่อยู่ IP ของเครื่องคุณ ผู้ดูแลเซิร์ฟเวอร์เหล่านี้ (Google อาสาสมัครที่ดูแล NTP Pool และ Cloudflare) จัดการข้อมูลนั้นตามเงื่อนไขของตนเอง เกมไม่ได้เพิ่มตัวระบุใด ๆ ของตัวเองและไม่ส่งข้อมูลการเล่นของคุณ ผู้พัฒนาไม่ได้ดูแลเซิร์ฟเวอร์เหล่านี้และไม่เห็นบันทึกการใช้งานของเซิร์ฟเวอร์</p>
 <p>หากตรวจเวลาไม่สำเร็จ เกมจะใช้เวลาที่รู้ล่าสุดต่อไปตราบที่เวลานั้นยังใช้ได้ และถ้าใช้ไม่ได้แล้วก็จะให้คุณลองอีกครั้ง</p>
 <h2>การสำรองข้อมูล</h2>
@@ -174,7 +174,7 @@
 </ul>
 <p>这些数据都不会发送给开发者，会一直留在你的设备上，直到你卸载应用或清除它的存储空间。</p>
 <h2>网络使用</h2>
-<p>游戏只发出一种网络请求：向时间服务器询问当前时间。这会在第一次启动、打开或回到应用时，以及设备重启之后进行。可能连接的服务器是 <code>time.google.com</code>、<code>pool.ntp.org</code> 和 <code>time.cloudflare.com</code>，使用标准的 NTP 协议。</p>
+<p>游戏只发出一种网络请求：询问当前时间。这会在第一次启动、打开或回到应用时，以及设备重启之后进行。游戏先通过标准的 NTP 协议询问时间服务器 <code>time.google.com</code>、<code>pool.ntp.org</code> 和 <code>time.cloudflare.com</code>。如果都没有回应（例如网络屏蔽了 NTP），游戏会向 <code>https://www.cloudflare.com/cdn-cgi/trace</code> 发送一次 HTTPS 请求，只读取回应中的日期和时间。</p>
 <p>和任何互联网请求一样，响应的服务器会看到你设备的 IP 地址。这些服务器的运营者（Google、NTP Pool 的志愿维护者与 Cloudflare）按各自的条款处理这项信息。游戏不会附加任何自己的标识符，也不会发送你的游戏数据。开发者不运营这些服务器，也看不到它们的日志。</p>
 <p>如果时间确认失败，游戏会在最后已知的时间仍然有效时继续使用它，否则会请你再试一次。</p>
 <h2>备份</h2>

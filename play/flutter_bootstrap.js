@@ -62,7 +62,14 @@ try {
   // Flutter's loader allows wasm on Chromium only by default; Firefox 120+ and Safari 18.2+ have WasmGC too. A browser
   // that lacks it still fails the loader's own feature check and gets the message below.
   var loading = _flutter.loader.load({
-    config: { wasmAllowList: { gecko: true, webkit: true } }
+    // fontFallbackBaseUrl: the engine's default font (Roboto) and its glyph fallbacks are fetched from Google's font
+    // CDN unless told otherwise; the one file it needs ships next to the app in gfonts/, so the page asks no third party
+    // for anything (docs/release/privacy-policy.md, Web version).
+    config: {
+      wasmAllowList: { gecko: true, webkit: true },
+      // absolute: the engine would resolve a relative path against assets/
+      fontFallbackBaseUrl: new URL('gfonts/', document.baseURI).href
+    }
   });
   if (loading && loading.catch) loading.catch(showUnsupported);
 } catch (error) {

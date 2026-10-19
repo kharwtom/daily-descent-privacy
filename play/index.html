@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- The build replaces the placeholder with --base-href (/daily-descent-privacy/play/ on GitHub Pages). -->
+  <base href="/daily-descent-privacy/play/">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="A daily-seed tactics roguelike. Everyone gets the same tower today.">
+  <!-- CoreColor.background -->
+  <meta name="theme-color" content="#0E0A18">
+  <meta name="color-scheme" content="dark">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Daily Descent">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <title>Daily Descent</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    /* The loading view while main.dart.js and the assets download. Colours are CoreColor.background and
+       CoreColor.textPrimary; the GIF is the one the app shows (assets/images/ui/loading.gif, 160 px, one source
+       pixel per CSS pixel like LayoutSpec.loaderSize). */
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #0E0A18;
+    }
+    #boot {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: #0E0A18;
+      color: #F1E9D6;
+      font: 400 20px/1.3 'Trebuchet MS', 'Segoe UI', sans-serif;
+      letter-spacing: 0.08em;
+      transition: opacity 200ms ease-out;
+    }
+    #boot.done {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #boot img {
+      width: 160px;
+      height: 160px;
+      image-rendering: pixelated;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #boot { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="boot">
+    <img src="loading.gif" alt="" width="160" height="160">
+    <div>Daily Descent</div>
+    <noscript>Daily Descent needs JavaScript.</noscript>
+  </div>
+  <script>
+    // The engine fires this once the first frame of the app is on screen.
+    window.addEventListener('flutter-first-frame', function () {
+      var boot = document.getElementById('boot');
+      if (!boot) return;
+      boot.classList.add('done');
+      setTimeout(function () { boot.remove(); }, 250);
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
